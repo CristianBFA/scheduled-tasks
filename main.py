@@ -5,8 +5,8 @@ import datetime as dt
 import smtplib
 
 
-my_email = os.environ.get("my_email")
-password = os.environ.get("password")
+MY_EMAIL = os.environ.get("MY_EMAIL")
+MY_PASSWORD = os.environ.get("MY_PASSWORD")
 
 today = dt.datetime.now()
 _month = today.month
@@ -26,9 +26,9 @@ if len(birthday_list) > 0:
 
         with smtplib.SMTP("smtp.gmail.com", port=587) as connection:
             connection.starttls()  # make connection secure
-            connection.login(user=my_email, password=password)
+            connection.login(user=MY_EMAIL, password=MY_PASSWORD)
             connection.sendmail(
-                from_addr=my_email,
+                from_addr=MY_EMAIL,
                 to_addrs=person[1],
                 msg=f"Subject:Happy Birthday!!!\n\n{letter_with_name}"
             )
